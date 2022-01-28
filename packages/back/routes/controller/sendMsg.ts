@@ -1,0 +1,41 @@
+import { Server, Socket } from "socket.io";
+
+import MailModel, { Mail } from '../modele/Mail'
+
+import ClientToServerEvents from "../type/ClientToServerEvents";
+import InterServerEvents from "../type/InterServerEvents";
+import ServerToClientEvents from "../type/ServerToClientEvents";
+import SocketData from "../type/SocketData";
+
+export default (socket : Socket<ClientToServerEvents, ServerToClientEvents, InterServerEvents, SocketData>,
+                io: Server<ClientToServerEvents, ServerToClientEvents, InterServerEvents, SocketData>) => {
+    return async (data : Mail) => {
+        const c = await MailModel.findById(data.history);
+
+        if (socket.data.user) {
+            const doc = new MailModel<Mail>({
+                metadata: {
+                    ...socket.data.user,
+                    titre: data.metadata.titre,
+                    categories: data.metadata.categories,
+                    to: data.metadata.to
+                },
+                interaction: data.interaction,
+                content: data.content,
+                history: c?._id
+            });
+
+            await doc.save();
+
+            const rooms = doc.metadata.to == doc.metadata.from ? [doc.metadata.to] : [doc.metadata.to, doc.metadata.from]
+
+            io.to(rooms).emit("sendMsg", {
+                metadata: doc.metadata,
+                content : doc.content,
+                interaction: doc.interaction,
+                history: doc.history,
+                _id: doc._id
+            });
+        }
+    }
+}

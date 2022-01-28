@@ -1,0 +1,17 @@
+{
+  "name": "mail-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "lerna run build",
+    "dev": "lerna run dev --stream"
+  },
+  "author": "",
+  "license": "ISC",
+  "workspaces": [
+    "packages/**"
+  ]
+}

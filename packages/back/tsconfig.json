@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+      "target": "ESNext",
+      "module": "CommonJS",
+      "moduleResolution": "Node",
+      "rootDir": "./",
+      "outDir": "./build",
+      "esModuleInterop": true,
+      "strict": true,
+      "declaration": true
+    },
+    "exclude" : [ 
+      "./build", 
+      "./node_modules",
+      "./test"
+    ] 
+  }
