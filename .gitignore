@@ -8,3 +8,5 @@ tsconfig.tsbuildinfo
 **/snapshots/**
 .env
 build
+**/videos
+**/screenshots
