@@ -1,5 +1,5 @@
 # mail_app_front
-https://mighty-peak-61341.herokuapp.com/
+https://tranquil-scrubland-71615.herokuapp.com/
 ## Project setup
 ```
 yarn install
