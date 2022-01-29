@@ -1,5 +1,5 @@
 {
-    "packages": ["packages/**", "apps/**"],
+    "packages": ["packages/**", "shared/**"],
     "version": "independent",
     "useWorkspaces": true
 }

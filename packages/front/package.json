@@ -1,5 +1,5 @@
 {
-  "name": "front",
+  "name": "@mail-app/front",
   "version": "0.0.0",
   "scripts": {
     "start": "node server",

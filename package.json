@@ -1,5 +1,5 @@
 {
-  "name": "mail-app",
+  "name": "@mail-app/root",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "workspaces": [
-    "packages/**"
+    "packages/**",
+    "shared/**"
   ]
 }
