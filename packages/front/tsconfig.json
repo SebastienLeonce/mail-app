@@ -1,4 +1,8 @@
 {
+  "references": [
+    { "path": "../../shared/event" },
+    { "path": "../../shared/model" }
+  ],
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",

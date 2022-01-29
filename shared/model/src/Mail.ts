@@ -1,13 +1,7 @@
-import {
-    model,
-    ObjectId,
-    PopulatedDoc,
-    Schema,
-    Types
-} from "mongoose";
+import { Types } from "mongoose";
 
 export interface Mail {
-    _id?: Types.ObjectId,
+    _id?: Types.ObjectId | string,
     metadata: {
         name: string,
         account: string,
@@ -19,48 +13,19 @@ export interface Mail {
     };
     interaction: boolean;
     content: string;
-    history: PopulatedDoc<Mail>
+    history: Types.ObjectId | string
 }
 
-const schema = new Schema < Mail > ({
+export const emptyMail : Mail = { 
     metadata: {
-        name: {
-            type: String,
-            required: true
-        },
-        account: {
-            type: String,
-            required: true
-        },
-        from: {
-            type: String,
-            required: true
-        },
-        date: {
-            type: Date,
-            default: Date.now
-        },
-        titre: {
-            type: String,
-            required: true
-        },
-        categories: [{
-            type: String,
-            required: true
-        }],
-        to: {
-            type: String,
-            required: true
-        }
+      name: '',
+      account: '',
+      from: '',
+      titre: '',
+      categories: [],
+      to: ''
     },
-    interaction: {
-        type: Boolean,
-        required: true
-    },
-    content: {
-        type: String
-    },
-    history: { type: Schema.Types.ObjectId, ref: 'Mail' }
-});
-
-export const MailModel =  model<Mail>('Mail', schema);
+    content: '',
+    interaction: true,
+    history: ''
+}

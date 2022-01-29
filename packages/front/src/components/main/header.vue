@@ -11,7 +11,7 @@
     import { computed }     from 'vue';
     import { useUserStore } from '@/store/user';
     
-    import Mail from '@/plugins/mail';
+    import { Mail } from '@mail-app/model';
 
     const store = useUserStore();
 
@@ -19,7 +19,7 @@
 
     const date = computed(() => {
         if (props.mail.metadata.date)
-            return new Date(props.mail.metadata.date as string).toLocaleString();
+            return new Date(props.mail.metadata.date as unknown as string).toLocaleString();
         return ''
     })
 

@@ -30,9 +30,14 @@ import overlay from '@/components/overlay.vue';
 import Main    from '@/components/main/index.vue';
 import notification from '@/components/notification.vue';
 
-import Mail, { emptyMail } from '@/plugins/mail'
+import {
+  ClientToServerEvents,
+  ServerToClientEvents
+} from "@mail-app/event"
 
-const socket = inject('socket') as Socket;
+import { Mail, emptyMail } from '@mail-app/model';
+
+const socket = inject('socket') as Socket<ServerToClientEvents, ClientToServerEvents>;
 const store  = useUserStore()
 
 const mails           = reactive<Mail[]>([]);
@@ -44,7 +49,7 @@ const selectedMail    = ref<Mail>(emptyMail)
 socket.auth = store.user; 
 socket.connect()
 
-socket.on('getMsg', (data: Mail[]) => {
+socket.on('getMsg', (data) => {
   if (selectedMail.value.content == '') selectedMail.value = data[0]
   if (data.length != 10) canLoadMoreMail.value = false
   

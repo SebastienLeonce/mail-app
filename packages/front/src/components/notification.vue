@@ -20,7 +20,8 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import Mail         from '@/plugins/mail';
+import { Mail } from '@mail-app/model';
+
 
 const props = defineProps<{ 
     mail: Mail;

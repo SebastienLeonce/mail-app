@@ -55,13 +55,14 @@
     import { Socket }       from 'socket.io-client';
     import { useUserStore } from '@/store/user'
     import WaveUI           from '@/plugins/wave-ui';
+    import { ClientToServerEvents, ServerToClientEvents } from "@mail-app/event"
 
     const store   = useUserStore()
 
     const props   = defineProps<{ modelValue: boolean }>();
     const emit    = defineEmits<{ (e: 'update:modelValue', val: boolean): void;}>();
 
-    const socket  = inject('socket') as Socket;
+    const socket = inject('socket') as Socket<ServerToClientEvents, ClientToServerEvents>;
     const waveUi  = inject('waveui') as WaveUI;
 
     const to      = ref('');
@@ -83,7 +84,7 @@
 			},
 			content: content.value,
 			interaction: true,
-			history: undefined
+			history: ''
 		});
         
         emit('update:modelValue', false)

@@ -2,18 +2,17 @@
     "name": "@mail-app/model",
     "version": "1.0.0",
     "description": "",
-    "main": "index.js",
     "scripts": {
-      "build": "tsc --build"
+        "build": "tsc --build"
     },
     "dependencies": {
+        "eslint": "^8.8.0",
         "mongoose": "6.1.6"
     },
     "devDependencies": {
-      "typescript": "^4.5.5",
-      "@types/node": "16.11.7"
+        "@types/node": "16.11.7",
+        "typescript": "^4.5.5"
     },
     "author": "",
     "license": "ISC"
-  }
-  
+}

@@ -2,7 +2,7 @@
     <footer class="bdrs6 sh3 d-flex justify-space-between footer-content">
         <w-button
             v-if="prev != ''"
-            @click="updateSelectedMail(prev)"
+            @click="updateSelectedMail(prev as string)"
             class="ma1"
             bg-color="primary"
         >
@@ -12,7 +12,7 @@
         <div class="spacer"></div>
         <w-button
             v-if="next != ''"
-            @click="updateSelectedMail(next)"
+            @click="updateSelectedMail(next as string)"
             class="ma1"
             bg-color="primary"
         >
@@ -26,9 +26,11 @@
     import { computed, inject } from 'vue';
     import { Socket } from 'socket.io-client';
     
-    import Mail from '@/plugins/mail';
+    import { Mail } from '@mail-app/model';
+    import { ClientToServerEvents, ServerToClientEvents } from '@mail-app/event';
 
-    const socket = inject('socket') as Socket;
+
+    const socket = inject('socket') as Socket<ServerToClientEvents, ClientToServerEvents>;
 
     const props = defineProps<{ 
         mails: Mail[],
@@ -52,7 +54,7 @@
         if (search) {
             emit('update:mail', search)
         } else {
-            socket.emit('getMailById',id, (mail : Mail) => emit('update:mail', mail))
+            socket.emit('getMailById',id, (mail) => emit('update:mail', mail as Mail))
         }
     }
 </script>

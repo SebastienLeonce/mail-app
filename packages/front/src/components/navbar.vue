@@ -69,12 +69,13 @@
     import { Socket }       from 'socket.io-client';
     import { useUserStore } from '@/store/user';
 
-    import Mail   from '@/plugins/mail'
+    import { Mail } from '@mail-app/model';
+    import { ClientToServerEvents, ServerToClientEvents } from '@mail-app/event';
+
     import WaveUI from '@/plugins/wave-ui';
 
     const waveUi = inject('waveui') as WaveUI
-    const socket = inject('socket') as Socket;
-
+    const socket = inject('socket') as Socket<ServerToClientEvents, ClientToServerEvents>;
     const store = useUserStore();
 
     const openDrawer  = ref(true);

@@ -27,10 +27,12 @@
     import { inject, ref }  from 'vue';
     import { useUserStore } from '@/store/user'
 
-    import Mail   from '@/plugins/mail';
+    import { ClientToServerEvents, ServerToClientEvents } from '@mail-app/event';
+
+    import { Mail }   from '@mail-app/model';
     import WaveUI from '@/plugins/wave-ui';
 
-    const socket = inject('socket') as Socket;
+    const socket = inject('socket') as Socket<ServerToClientEvents, ClientToServerEvents>;
     const waveUi  = inject('waveui') as WaveUI
     
     const props = defineProps<{ 
@@ -54,7 +56,7 @@
 			},
 			content: content.value,
 			interaction: true,
-			history: props.mail._id
+			history: props.mail._id as string
 		});
         content.value = '';
         emit('update:show-reply', false)

@@ -16,10 +16,10 @@ describe("Typescript usage suite", () => {
 	let clientSocket1: Socket < ServerToClientEvents, ClientToServerEvents > ;
 	let clientSocket2: Socket < ServerToClientEvents, ClientToServerEvents > ;
 	
-	let old_mail_id1: Types.ObjectId | undefined;
-	let old_mail_id2: Types.ObjectId | undefined;
-	let old_mail_id3: Types.ObjectId | undefined;
-	let old_mail_id4: Types.ObjectId | undefined;
+	let old_mail_id1: Types.ObjectId | string | undefined;
+	let old_mail_id2: Types.ObjectId | string | undefined;
+	let old_mail_id3: Types.ObjectId | string | undefined;
+	let old_mail_id4: Types.ObjectId | string | undefined;
 
 	beforeEach(() => {
 		clientSocket1 = Client(`http://localhost:3000`, {
@@ -83,7 +83,7 @@ describe("Typescript usage suite", () => {
 			},
 			content: "coucou",
 			interaction: true,
-			history: undefined
+			history: ''
 		});
 	})
 
@@ -124,7 +124,7 @@ describe("Typescript usage suite", () => {
 				},
 				content: "hello",
 				interaction: true,
-				history: data[0]._id
+				history: data[0]._id as string
 			})
 		})
 
@@ -169,7 +169,7 @@ describe("Typescript usage suite", () => {
 				},
 				content: "holla",
 				interaction: true,
-				history: data[0]._id
+				history: data[0]._id as string
 			})
 		})
 
@@ -209,7 +209,7 @@ describe("Typescript usage suite", () => {
 			},
 			content: "coucou",
 			interaction: true,
-			history: undefined
+			history: ''
 		});
 	})
 
@@ -231,7 +231,7 @@ describe("Typescript usage suite", () => {
 			},
 			content: "coucou",
 			interaction: true,
-			history: undefined
+			history: ''
 		});
 	})
 
@@ -241,6 +241,6 @@ describe("Typescript usage suite", () => {
 			strictEqual(data[0], 'seb@seb')
 			strictEqual(data[1], 'test@test')
 			done()
-		})
+		});
 	})
 });

@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-    import Mail from '@/plugins/mail';
+    import { Mail } from '@mail-app/model';
 
     defineProps<{ 
         mail: Mail,
