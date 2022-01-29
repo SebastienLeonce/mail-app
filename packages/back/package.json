@@ -8,7 +8,7 @@
     "dev": "kill-port 3000 && nodemon index.ts",
     "build": "tsc --build",
     "clean": "tsc --build --clean",
-    "test": "cross-env NODE_ENV=test mocha --exit"
+    "test": "kill-port 3000 && cross-env NODE_ENV=test mocha --exit"
   },
   "author": "",
   "license": "ISC",
