@@ -1,11 +1,13 @@
 import { Server, Socket } from "socket.io";
 
-import MailModel, { Mail } from '../modele/Mail'
+import { MailModel, Mail } from "@mail-app/model";
 
-import ClientToServerEvents from "../type/ClientToServerEvents";
-import InterServerEvents from "../type/InterServerEvents";
-import ServerToClientEvents from "../type/ServerToClientEvents";
-import SocketData from "../type/SocketData";
+import { 
+    ClientToServerEvents, 
+    ServerToClientEvents, 
+    InterServerEvents,
+    SocketData
+} from '@mail-app/event';
 
 export default (socket : Socket<ClientToServerEvents, ServerToClientEvents, InterServerEvents, SocketData>,
                 io: Server<ClientToServerEvents, ServerToClientEvents, InterServerEvents, SocketData>) => {

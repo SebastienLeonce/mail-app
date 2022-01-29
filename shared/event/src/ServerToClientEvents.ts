@@ -1,4 +1,4 @@
-import { Mail } from "@mail-app/model/src/Mail"
+import { Mail } from "@mail-app/model"
 
 export default interface ServerToClientEvents {
     noArg: () => void;

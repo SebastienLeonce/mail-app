@@ -2,10 +2,12 @@ import { Server } from "socket.io";
 import * as dotenv from 'dotenv'; dotenv.config();
 import db from './plugins/db'; db;
 
-import ClientToServerEvents from "./routes/type/ClientToServerEvents";
-import InterServerEvents from "./routes/type/InterServerEvents";
-import ServerToClientEvents from "./routes/type/ServerToClientEvents";
-import SocketData from "./routes/type/SocketData";
+import { 
+    ClientToServerEvents, 
+    ServerToClientEvents, 
+    InterServerEvents,
+    SocketData
+} from '@mail-app/event';
 
 
 import getUser from "./routes/controller/getUser";

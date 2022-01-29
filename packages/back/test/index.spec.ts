@@ -3,10 +3,13 @@ import io from '../index'; io;
 
 import { strictEqual } from "assert";
 
-import ClientToServerEvents from "../routes/type/ClientToServerEvents";
-import ServerToClientEvents from "../routes/type/ServerToClientEvents";
+import { 
+    ClientToServerEvents, 
+    ServerToClientEvents
+} from '@mail-app/event';
 
-import { Mail } from "../routes/modele/Mail";
+import { Mail } from "@mail-app/model";
+
 import { Types } from "mongoose";
 
 describe("Typescript usage suite", () => {

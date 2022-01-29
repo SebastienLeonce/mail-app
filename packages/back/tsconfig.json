@@ -1,17 +1,21 @@
 {
-    "compilerOptions": {
-      "target": "ESNext",
-      "module": "CommonJS",
-      "moduleResolution": "Node",
-      "rootDir": "./",
-      "outDir": "./build",
-      "esModuleInterop": true,
-      "strict": true,
-      "declaration": true
-    },
-    "exclude" : [ 
-      "./build", 
-      "./node_modules",
-      "./test"
-    ] 
-  }
+  "references": [
+    { "path": "../../shared/event" },
+    { "path": "../../shared/model" }
+  ],
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "rootDir": "./",
+    "outDir": "./build",
+    "esModuleInterop": true,
+    "strict": true,
+    "declaration": true
+  },
+  "exclude" : [ 
+    "./build", 
+    "./node_modules",
+    "./test"
+  ] 
+}

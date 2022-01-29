@@ -22,7 +22,6 @@ export interface Mail {
     history: PopulatedDoc<Mail>
 }
 
-// 2. Create a Schema corresponding to the document interface.
 const schema = new Schema < Mail > ({
     metadata: {
         name: {
@@ -64,4 +63,4 @@ const schema = new Schema < Mail > ({
     history: { type: Schema.Types.ObjectId, ref: 'Mail' }
 });
 
-export default model<Mail>('Mail', schema);
+export const MailModel =  model<Mail>('Mail', schema);
