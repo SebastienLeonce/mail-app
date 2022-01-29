@@ -1,1 +1,1 @@
-web: npm start
+web: yarn workspace @mail-app/back start
