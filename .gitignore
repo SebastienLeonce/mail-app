@@ -1,5 +1,9 @@
 node_modules
 dist
-.yarn
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
 *.log
 tsconfig.tsbuildinfo
+.env
+build

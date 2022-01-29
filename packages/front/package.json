@@ -10,6 +10,8 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@mail-app/event": "workspace:^",
+    "@mail-app/model": "workspace:^",
     "@mdi/font": "^6.5.95",
     "core-js": "^3.6.5",
     "dotenv": "^14.3.0",

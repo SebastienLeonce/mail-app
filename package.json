@@ -5,9 +5,9 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "test": "lerna run test",
-    "build": "lerna run build",
-    "dev": "lerna run dev --stream"
+    "test": "yarn workspaces foreach run test",
+    "build": "yarn workspaces foreach -pt run build",
+    "dev": "yarn workspaces foreach -pvi run dev"
   },
   "author": "",
   "license": "ISC",
@@ -15,7 +15,8 @@
     "packages/**",
     "shared/**"
   ],
+  "packageManager": "yarn@3.1.1",
   "devDependencies": {
-    "lerna": "^4.0.0"
+    "ts-node": "^10.4.0"
   }
 }
