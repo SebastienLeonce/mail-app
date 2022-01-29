@@ -19,7 +19,6 @@ describe("Typescript usage suite", () => {
 	let old_mail_id1: Types.ObjectId | string | undefined;
 	let old_mail_id2: Types.ObjectId | string | undefined;
 	let old_mail_id3: Types.ObjectId | string | undefined;
-	let old_mail_id4: Types.ObjectId | string | undefined;
 
 	beforeEach(() => {
 		clientSocket1 = Client(`http://localhost:3000`, {
