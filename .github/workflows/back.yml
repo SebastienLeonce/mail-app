@@ -8,10 +8,12 @@ on:
     branches: [ master ]
     paths: 
       - "packages/back/**"
+      - "shared/**"
   pull_request:
     branches: [ master ]
     paths: 
       - "packages/back/**"
+      - "shared/**"
 
 jobs:
   build:
