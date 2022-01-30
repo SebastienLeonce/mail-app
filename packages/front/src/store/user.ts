@@ -1,6 +1,6 @@
-import { defineStore   } from 'pinia'
+import { defineStore } from 'pinia'
+import { Mail        } from '@mail-app/model';
 import { reactive, ref, watch } from 'vue'
-import { Mail          } from '@mail-app/model';
 
 interface User {
   name: string,
@@ -15,7 +15,7 @@ export const useUserStore = defineStore('user', () => {
     from: ''
   });
 
-  const mails = reactive<Mail[]>(JSON.parse(localStorage.getItem('mails') || '[]'));
+  const mails = reactive<Mail[]>([]);
 
   watch<Mail[]>(mails as Mail[], (newValue) => {
     const oldValue : Mail[] = JSON.parse(localStorage.getItem('mails') || '[]');
@@ -39,6 +39,13 @@ export const useUserStore = defineStore('user', () => {
 
   function login (data : User) {
     user.value = data
+
+    const t : Mail[] = JSON.parse(localStorage.getItem('mails') || '[]') 
+
+    if (t.every(value => value.metadata.from == data.from || value.metadata.to == data.from))
+      mails.concat(t)
+    else
+      localStorage.removeItem('mails')
   }
 
   function logout () {
