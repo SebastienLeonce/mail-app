@@ -1,8 +1,8 @@
 <template>
     <main class="grow bdrs6 sh3 main-content">
-        <p v-html="mail.content"></p>
+        <p v-html="mail.content" style="height: 100%;"></p>
         <w-button
-            class="ma1 mr6 main-btn" 
+            class="mt-12 ml7 main-btn" 
             v-if="mail.content != '' && !showReply"
             icon="mdi mdi-reply" xl 
             @click="emit('update:show-reply', true)"
@@ -34,8 +34,6 @@
 
 .main-btn {
     position: fixed;
-    bottom: 0;  
-    left: 32px;
-    margin-bottom: 100px;
+    left: 0;
 }
 </style>
