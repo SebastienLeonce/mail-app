@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node  -r ts-node/register -r tsconfig-paths/register ./build/index.js",
+    "start": "cross-env TS_NODE_PROJECT=build/tsconfig.json node -r tsconfig-paths/register ./build/index.js",
     "dev": "nodemon -r tsconfig-paths/register index.ts",
-    "build": "tsc --build",
+    "build": "tsc --build && cp ./tsconfig.json ./build/ || copy tsconfig.json build",
     "clean": "tsc --build --clean",
     "test": "cross-env NODE_ENV=test mocha --exit"
   },
