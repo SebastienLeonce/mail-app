@@ -21,9 +21,8 @@ import {
 } from '@controller/User'
 
 const io = new Server<ClientToServerEvents, ServerToClientEvents, InterServerEvents, SocketData>({
-    allowRequest: (req, callback) => {
-        const noOriginHeader = req.headers.origin === undefined;
-        callback(null, noOriginHeader);
+    cors: {
+        origin: ["http://localhost:8080", "https://tranquil-scrubland-71615.herokuapp.com"]
     }
 });
 
