@@ -16,5 +16,5 @@ app.
     use(createPinia()).
     use(router).
     provide('waveui', reactive(waveui)).
-    provide('socket', io(process.env.VUE_APP_ROOT_API, { autoConnect: false })).
+    provide('socket', io(process.env.VUE_APP_ROOT_API as any, { autoConnect: false })).
     mount('#app')
