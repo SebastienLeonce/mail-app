@@ -9,12 +9,13 @@ import {
     SocketData
 } from '@mail-app/event';
 
-
-import getUser from "./routes/controller/getUser";
-import sendMsg from "./routes/controller/sendMsg";
-import getMsg from "./routes/controller/getMsg";
-import getAllUser from "./routes/controller/getAllUser";
-import getMailById from "./routes/controller/getMailById";
+import {
+    getUser,
+    sendMsg,
+    getAllUser,
+    getMsg,
+    getMailById
+} from './routes/controller'
 
 const io = new Server<ClientToServerEvents, ServerToClientEvents, InterServerEvents, SocketData>({
     cors: {
