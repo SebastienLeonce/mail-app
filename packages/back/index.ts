@@ -2,6 +2,9 @@ import { Server } from "socket.io";
 import * as dotenv from 'dotenv'; dotenv.config();
 import db from './plugins/db'; db;
 
+require('ts-node/register')
+require('tsconfig-paths/register')
+
 import { 
     ClientToServerEvents, 
     ServerToClientEvents, 
