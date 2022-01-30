@@ -1,5 +1,8 @@
 <template>
-    <footer class="bdrs6 sh3 d-flex justify-space-between footer-content">
+    <footer 
+        v-if="prev != '' || next != ''"
+        class="bdrs6 sh3 d-flex justify-space-between footer-content"
+    >
         <w-button
             v-if="prev != ''"
             @click="updateSelectedMail(prev as string)"
