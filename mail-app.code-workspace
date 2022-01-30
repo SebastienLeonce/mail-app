@@ -6,6 +6,10 @@
 	],
 	"settings": {
 		"volar.icon.preview": true,
-		"volar.icon.finder": true
+		"volar.icon.finder": true,
+		"git.autofetch": "all",
+		"git.pruneOnFetch": true,
+		"editor.tabSize": 4,
+        "editor.detectIndentation": false
 	}
 }
