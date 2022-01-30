@@ -40,7 +40,7 @@ import { Mail, emptyMail } from '@mail-app/model';
 const socket = inject('socket') as Socket<ServerToClientEvents, ClientToServerEvents>;
 const store  = useUserStore()
 
-const mails           = reactive<Mail[]>([]);
+const mails           = store.mails;
 const showOverlay     = ref(false);
 const notifNewMail    = ref(false);
 const canLoadMoreMail = ref(true);
