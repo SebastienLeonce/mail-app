@@ -21,8 +21,9 @@ import {
 } from '@controller/User'
 
 const io = new Server<ClientToServerEvents, ServerToClientEvents, InterServerEvents, SocketData>({
-    cors: {
-        origin: "*",
+    allowRequest: (req, callback) => {
+        const noOriginHeader = req.headers.origin === undefined;
+        callback(null, noOriginHeader);
     }
 });
 
