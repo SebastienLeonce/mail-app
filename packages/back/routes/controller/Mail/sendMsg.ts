@@ -1,7 +1,7 @@
 import { Server, Socket } from "socket.io";
 
 import { Mail } from "@mail-app/model";
-import { MailModel } from "../models/Mail";
+import { MailModel } from "@models/Mail";
 
 import { 
     ClientToServerEvents, 
