@@ -9,9 +9,14 @@
     "moduleResolution": "Node",
     "rootDir": "./",
     "outDir": "./build",
+    "baseUrl": ".",
     "esModuleInterop": true,
     "strict": true,
-    "declaration": true
+    "declaration": true,
+    "paths": {
+      "@controller/*": ["./routes/controller/*"],
+      "@models/*": ["./routes/models/*"]
+    }
   },
   "exclude" : [ 
     "./build", 

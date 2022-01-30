@@ -10,12 +10,15 @@ import {
 } from '@mail-app/event';
 
 import {
-    getUser,
     sendMsg,
-    getAllUser,
     getMsg,
     getMailById
-} from './routes/controller'
+} from '@controller/Mail'
+
+import {
+    getUser,
+    getAllUser
+} from '@controller/User'
 
 const io = new Server<ClientToServerEvents, ServerToClientEvents, InterServerEvents, SocketData>({
     cors: {
