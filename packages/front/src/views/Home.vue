@@ -48,12 +48,14 @@ const selectedMail    = ref<Mail>(emptyMail)
 
 socket.auth = store.user; 
 socket.connect()
+socket.off('getMsg')
+socket.off('sendMsg')
 
-socket.on('getMsg', (data) => {
-  if (selectedMail.value.content == '') selectedMail.value = data[0]
-  if (data.length != 10) canLoadMoreMail.value = false
+socket.on('getMsg', (data) => { 
+    if (selectedMail.value.content == '') selectedMail.value = data[0]
+    if (data.length != 10) canLoadMoreMail.value = false
   
-  mails.push(...data)
+    mails.push(...data)
 })
 
 socket.on("sendMsg", (data: Mail) => {
@@ -71,6 +73,7 @@ const updateMail = (mail: Mail) => {
 
 const logout = () => {
   store.logout();
+  socket.disconnect()
   router.push('/login');
 }
 
