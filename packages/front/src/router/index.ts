@@ -16,11 +16,20 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/login',
     name: 'Login',
-    beforeEnter: (to, from, next) => {
-      const store = useUserStore()
+    beforeEnter: (_to, _from, next) => {
+        const store = useUserStore()
+        const user  = localStorage.getItem('user')
 
-      if (store.isLogged()) next('/')
-      else next()
+        if (user) {
+            store.login(JSON.parse(user) as {
+                name: string,
+                account: string,
+                from: string
+            })
+        }
+
+        if (store.isLogged()) next('/')
+        else next()
     },
     component: () => import('../views/Login.vue')
   }
