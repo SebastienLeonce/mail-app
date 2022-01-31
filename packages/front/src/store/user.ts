@@ -15,7 +15,7 @@ export const useUserStore = defineStore('user', () => {
         from: ''
     });
 
-    const mails = reactive<Mail[]>([]);
+    const mails = reactive<Mail[]>(JSON.parse(localStorage.getItem('mails') || '[]'));
 
     watch<Mail[]>(mails as Mail[], (newValue) => {
         const oldValue : Mail[] = JSON.parse(localStorage.getItem('mails') || '[]');
@@ -38,9 +38,6 @@ export const useUserStore = defineStore('user', () => {
 
     function login (data : User) {
         user.value = data
-
-        if (localStorage.getItem('user'))
-            mails.concat(JSON.parse(localStorage.getItem('mails') || '[]'))
             
         localStorage.setItem('user', JSON.stringify(data))
     }

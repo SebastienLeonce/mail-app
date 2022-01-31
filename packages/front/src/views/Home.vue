@@ -54,8 +54,14 @@ socket.off('sendMsg')
 socket.on('getMsg', (data) => { 
     if (selectedMail.value.content == '') selectedMail.value = data[0]
     if (data.length != 10) canLoadMoreMail.value = false
+
+    const m = data.filter(mail => {
+        return !mails.map(item => {
+            return mail._id == item._id
+        }).includes(true)
+    })
   
-    mails.push(...data)
+    mails.push(...m)
 })
 
 socket.on("sendMsg", (data: Mail) => {
