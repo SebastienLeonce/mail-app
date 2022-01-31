@@ -7,7 +7,6 @@ interface User {
   account: string,
   from: string
 }
-
 export const useUserStore = defineStore('user', () => {
   const user = ref<User>({
     name: '',
@@ -33,20 +32,17 @@ export const useUserStore = defineStore('user', () => {
   })
 
   function isLogged () : boolean {
-    if (user.value.from != '') return true
-    return false
+        return user.value.from != ''
   }
 
   function login (data : User) {
     user.value = data
 
-    const t : Mail[] = JSON.parse(localStorage.getItem('mails') || '[]') 
-
-    if (t.every(value => value.metadata.from == data.from || value.metadata.to == data.from))
-      mails.concat(t)
-    else
-      localStorage.removeItem('mails')
-  }
+    if (localStorage.getItem('user'))
+            mails.concat(JSON.parse(localStorage.getItem('mails') || '[]'))
+        
+        localStorage.setItem('user', JSON.stringify(data))
+    }
 
   function logout () {
     user.value = {
@@ -54,6 +50,9 @@ export const useUserStore = defineStore('user', () => {
       account: '',
       from: ''
     }
+
+    mails.splice(0, mails.length)
+    localStorage.clear()
   }
 
   return { user, isLogged, login, logout, mails }
