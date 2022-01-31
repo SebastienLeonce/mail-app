@@ -97,13 +97,15 @@
             return !props.mails.map((val) => {
                 return val.history == mail._id
             }).includes(true)
+        }).sort((a, b) => {
+            return Date.parse(b.metadata.date as unknown as any) - Date.parse(a.metadata.date as unknown as any)
         })
     })
 
     const onScroll = (payload: Event ) => {
         const t = payload.target as HTMLInputElement
 
-        if (t.scrollTop + t.clientHeight >= t.scrollHeight - .5)
+        if (t.scrollTop + t.clientHeight >= t.scrollHeight - 1)
             socket.emit('getMsg', filterMail.value.length)
     }
 
