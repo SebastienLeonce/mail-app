@@ -54,7 +54,7 @@
     import { computed, inject, ref } from 'vue'
     import { Socket }       from 'socket.io-client';
     import { useUserStore } from '@/store/user'
-    import WaveUI           from '@/plugins/wave-ui';
+    import WaveUI           from 'wave-ui';
     import { ClientToServerEvents, ServerToClientEvents } from "@mail-app/event"
 
     const store   = useUserStore()

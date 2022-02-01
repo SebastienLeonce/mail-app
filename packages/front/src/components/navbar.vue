@@ -71,8 +71,7 @@
 
     import { Mail } from '@mail-app/model';
     import { ClientToServerEvents, ServerToClientEvents } from '@mail-app/event';
-
-    import WaveUI from '@/plugins/wave-ui';
+    import { WaveUI } from 'wave-ui';
 
     const waveUi = inject('waveui') as WaveUI
     const socket = inject('socket') as Socket<ServerToClientEvents, ClientToServerEvents>;
@@ -98,7 +97,7 @@
                 return val.history == mail._id
             }).includes(true)
         }).sort((a, b) => {
-            return Date.parse(b.metadata.date as unknown as any) - Date.parse(a.metadata.date as unknown as any)
+            return Date.parse(b.metadata.date as unknown as string) - Date.parse(a.metadata.date as unknown as string)
         })
     })
 

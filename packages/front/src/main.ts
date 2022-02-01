@@ -10,11 +10,9 @@ import '@mdi/font/css/materialdesignicons.min.css'
 
 const app = createApp(App)
 
-const waveui = new WaveUI(app, {})
-
 app.
     use(createPinia()).
     use(router).
-    provide('waveui', reactive(waveui)).
-    provide('socket', io(process.env.VUE_APP_ROOT_API as any, { autoConnect: false })).
+    provide('waveui', reactive(new WaveUI(app, {}))).
+    provide('socket', io(process.env.VUE_APP_ROOT_API as string, { autoConnect: false })).
     mount('#app')

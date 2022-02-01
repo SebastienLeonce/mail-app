@@ -20,7 +20,7 @@
     import Footer   from './footer.vue';
     
     import { Mail } from '@mail-app/model';
-    import WaveUI   from '@/plugins/wave-ui';
+    import WaveUI   from 'wave-ui';
 
     const waveUi : WaveUI = inject('waveui') as WaveUI
 

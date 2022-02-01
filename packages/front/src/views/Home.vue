@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { inject, reactive, ref } from 'vue';
+import { inject, ref } from 'vue';
 import { Socket }       from 'socket.io-client';
 import { useUserStore } from '@/store/user'
 import router           from '@/router';

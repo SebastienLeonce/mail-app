@@ -30,7 +30,7 @@
     import { ClientToServerEvents, ServerToClientEvents } from '@mail-app/event';
 
     import { Mail }   from '@mail-app/model';
-    import WaveUI from '@/plugins/wave-ui';
+    import WaveUI from 'wave-ui';
 
     const socket = inject('socket') as Socket<ServerToClientEvents, ClientToServerEvents>;
     const waveUi  = inject('waveui') as WaveUI
