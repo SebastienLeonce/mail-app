@@ -22,7 +22,7 @@ import {
 
 const io = new Server<ClientToServerEvents, ServerToClientEvents, InterServerEvents, SocketData>({
     cors: {
-        origin: ["*"]
+        origin: ["http://localhost:8080", "https://tranquil-scrubland-71615.herokuapp.com"]
     }
 });
 
