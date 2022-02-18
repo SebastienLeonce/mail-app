@@ -15,8 +15,8 @@ export default (socket : Socket<ClientToServerEvents, ServerToClientEvents, Inte
             aggregate().
             match({
                 $or: [
-                    { 'metadata.from': socket.data.user?.from },
-                    { 'metadata.to'  : socket.data.user?.from }
+                    { 'metadata.sender.mail': socket.data.user?.from },
+                    { 'metadata.receiver'  : socket.data.user?.from }
                 ]
             }).
             lookup({

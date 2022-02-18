@@ -48,7 +48,7 @@
                     </div>
                     <div class="spacer"></div>
                     <div class="hamburger-text-overflow">
-                        {{ mail.metadata.titre }}
+                        {{ mail.metadata.subject }}
                     </div>
                 </template>
                 <p class="hamburger-text-overflow text-nowrap" v-html="mail.content"></p>
@@ -118,7 +118,7 @@
     })
 
     const to = (mail: Mail) => {
-        return store.user.from == mail.metadata.to ? mail.metadata.from : mail.metadata.to
+        return store.user.from == mail.metadata.receiver ? mail.metadata.sender.mail : mail.metadata.receiver
     }
 
     const selectMail = (mail: Mail) => {

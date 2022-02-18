@@ -12,8 +12,8 @@ import {
 export default (socket : Socket<ClientToServerEvents, ServerToClientEvents, InterServerEvents, SocketData>) => {
     return  async (cb : Function) => {
         const doc = await MailModel.
-            find({ 'metadata.to': socket.data.user?.from })
-            .distinct('metadata.from');
+            find({ 'metadata.receiver': socket.data.user?.from })
+            .distinct('metadata.sender.mail');
 
         cb(doc);
     };

@@ -46,16 +46,20 @@
     const content = ref('');
 
     const response = () => {
-        const to = props.mail.metadata.from == store.user.from ? props.mail.metadata.to : props.mail.metadata.from;
+        const to = props.mail.metadata.sender.mail == store.user.from ? props.mail.metadata.receiver : props.mail.metadata.sender.mail;
         socket.emit("sendMsg", { 
 			metadata: {
-				...store.user,
-				titre: props.mail.metadata.titre,
-				categories: ['TEST'],
-				to: to
+                sender: {
+                    name: store.user.name,
+                    lastName: store.user.name,
+                    account: store.user.account,
+                    mail: store.user.from
+                },
+                receiver: to,
+                subject: props.mail.metadata.subject,
+                categories: ['TEST']
 			},
 			content: content.value,
-			interaction: true,
 			history: props.mail._id as string
 		});
         content.value = '';
