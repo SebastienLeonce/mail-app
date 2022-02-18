@@ -7,7 +7,7 @@
         round
         shadow>
     <div class="pa2">
-        <p>New mail from: <span>{{ mail.metadata.from }}</span> </p>
+        <p>New mail from: <span>{{ mail.metadata.sender.mail }}</span> </p>
         <w-button
             class="mt2"
             @click="$emit('update:selected-mail', mail); show = false"

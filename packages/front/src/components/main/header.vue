@@ -1,7 +1,7 @@
 <template>
     <header class="bdrs6 sh3 d-flex justify-space-evenly align-center align-self-stretch header-content"
     >
-        <span>Subject: {{ mail.metadata.titre }}</span>
+        <span>Subject: {{ mail.metadata.subject }}</span>
         <span>To: {{ to }}</span>
         <span>At: {{ date }}</span>
     </header>
@@ -24,7 +24,7 @@
     })
 
     const to = computed(() => {
-        return store.user.from == props.mail.metadata.to ? props.mail.metadata.from : props.mail.metadata.to
+        return store.user.from == props.mail.metadata.receiver ? props.mail.metadata.sender.mail : props.mail.metadata.receiver
     })
 </script>
 

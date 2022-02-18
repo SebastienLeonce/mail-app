@@ -6,23 +6,29 @@ import {
 
 const schema = new Schema < Mail > ({
     metadata: {
-        name: {
+        sender: {
+            name: {
+                type: String,
+                required: true
+            },
+            lastName: {
+                type: String,
+                required: true
+            },
+            account: {
+                type: String,
+                required: true
+            },
+            mail: {
+                type: String,
+                required: true
+            }
+        },
+        receiver: {
             type: String,
             required: true
         },
-        account: {
-            type: String,
-            required: true
-        },
-        from: {
-            type: String,
-            required: true
-        },
-        date: {
-            type: Date,
-            default: Date.now
-        },
-        titre: {
+        subject: {
             type: String,
             required: true
         },
@@ -30,17 +36,14 @@ const schema = new Schema < Mail > ({
             type: String,
             required: true
         }],
-        to: {
-            type: String,
-            required: true
+        date: {
+            type: Date,
+            default: Date.now
         }
     },
-    interaction: {
-        type: Boolean,
-        required: true
-    },
     content: {
-        type: String
+        type: String,
+        required: true
     },
     history: { type: Schema.Types.ObjectId, ref: 'Mail' }
 });

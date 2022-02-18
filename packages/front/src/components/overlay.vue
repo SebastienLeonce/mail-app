@@ -77,13 +77,17 @@
     const sendMsg = () => {
         socket.emit("sendMsg", { 
 			metadata: {
-				...store.user,
-				titre: subject.value,
-				categories: ['TEST'],
-				to: to.value
+                sender: {
+                    name: store.user.name,
+                    lastName: store.user.name,
+                    account: store.user.account,
+                    mail: store.user.from
+                },
+                receiver: to.value,
+                subject: subject.value,
+				categories: ['TEST']
 			},
 			content: content.value,
-			interaction: true,
 			history: ''
 		});
         

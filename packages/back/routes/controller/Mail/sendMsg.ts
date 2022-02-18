@@ -20,24 +20,27 @@ export default (
             if (socket.data.user) {
                 const doc = new MailModel<Mail>({
                     metadata: {
-                        ...socket.data.user,
-                        titre: data.metadata.titre,
-                        categories: data.metadata.categories,
-                        to: data.metadata.to
+                        sender: {
+                            name: socket.data.user.name,
+                            lastName: socket.data.user.name,
+                            account: socket.data.user.account,
+                            mail: socket.data.user.from
+                        },
+                        receiver: data.metadata.receiver,
+                        subject: data.metadata.subject,
+                        categories: data.metadata.categories
                     },
-                    interaction: data.interaction,
                     content: data.content,
                     history: c?._id
                 });
 
                 await doc.save();
 
-                const rooms = doc.metadata.to == doc.metadata.from ? [doc.metadata.to] : [doc.metadata.to, doc.metadata.from]
+                const rooms = doc.metadata.receiver == doc.metadata.sender.mail ? [doc.metadata.receiver] : [doc.metadata.receiver, doc.metadata.sender.mail]
 
                 io.to(rooms).emit("sendMsg", {
                     metadata: doc.metadata,
                     content : doc.content,
-                    interaction: doc.interaction,
                     history: doc.history,
                     _id: doc._id
                 });

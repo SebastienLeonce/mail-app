@@ -3,29 +3,39 @@ import { Types } from "mongoose";
 export interface Mail {
     _id?: Types.ObjectId | string,
     metadata: {
-        name: string,
-        account: string,
-        from: string,
+        sender: {
+            name: string,
+            lastName: string,
+            account: string,
+            mail: string,
+        },
+        receiver: string,
+        subject: string,
+        categories: string[]
         date?: Date
-        titre: string,
-        categories: string[],
-        to : string
     };
-    interaction: boolean;
     content: string;
-    history: Types.ObjectId | string
+    history: Types.ObjectId | string,
+    extension?: {
+        _id?: string,
+        name: string,
+        reference: object,
+        version: string
+    }
 }
 
 export const emptyMail : Mail = { 
     metadata: {
-      name: '',
-      account: '',
-      from: '',
-      titre: '',
-      categories: [],
-      to: ''
+         sender: {
+            name: '',
+            lastName: '',
+            account: '',
+            mail: '',
+        },
+        receiver: '',
+        subject: '',
+        categories: []
     },
     content: '',
-    interaction: true,
-    history: ''
+    history: '',
 }

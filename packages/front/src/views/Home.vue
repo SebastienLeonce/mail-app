@@ -60,14 +60,14 @@ socket.on('getMsg', (data) => {
             return mail._id == item._id
         }).includes(true)
     })
-  
+    console.log(data)
     mails.push(...m)
 })
 
 socket.on("sendMsg", (data: Mail) => {
 	mails.unshift(data);
 
-  if (store.user.from != data.metadata.from)
+  if (store.user.from != data.metadata.sender.mail)
     notifNewMail.value = true;
 });
 
